@@ -22,7 +22,8 @@ func main() {
 	defer db.Close()
 
 	stm := SELECT(Posts.AllColumns, Comments.AllColumns).
-		FROM(Posts.LEFT_JOIN(Comments, Comments.PostID.EQ(Posts.ID)))
+		FROM(Posts.LEFT_JOIN(Comments, Comments.PostID.EQ(Posts.ID))).
+		WHERE(Posts.ID.IN(SELECT(Posts.ID).FROM(Posts).LIMIT(2)))
 
 	var dist []struct {
 		model.Posts
