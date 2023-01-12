@@ -10,7 +10,7 @@ I also used this new SQLite driver with No CGO from https://gitlab.com/cznic/sql
 go mod tidy
 ```
 
-To generate go files for your *schema/query*, run:
+To generate go files for your *tables & models*, run:
 
 ```
 jet -source=sqlite -dsn="./db/database.db" -path=./gen
